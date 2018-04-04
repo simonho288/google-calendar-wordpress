@@ -14,6 +14,9 @@
 5. Add Google Calendar API PHP codes.
   - Add Google API library in index.php
 6. Create frontend project (HTML/CSS/JS).
+  - Create assets directory
+  - Create assets/main.css
+  - Create assets/main.js
 7. Adding jQuery FullCalendar
 8. Connecting the frontend and backend
 9. The final system can create an event, save the events, deleting event. All can be seen in Google Calendar.
