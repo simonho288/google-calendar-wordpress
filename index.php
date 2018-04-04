@@ -21,7 +21,8 @@ $gapi->addScope(Google_Service_Calendar::CALENDAR);
     <?php wp_head(); ?>
   </head>
   <body>
-    <h1>Hello, world...</h1>
+    <h1>Google Calendar WordPress Theme Demo</h1>
+    <div id="calendar"></div>
     <?php wp_footer(); ?>
   </body>
  </html>

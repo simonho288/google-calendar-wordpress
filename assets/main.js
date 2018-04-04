@@ -4,4 +4,6 @@ var $ = undefined; // jQuery shorthand
 
 jQuery(document).ready(function(jquery) {
   $ = jquery;
+  $('#calendar').fullCalendar({
+  });
 });
