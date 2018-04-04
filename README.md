@@ -12,9 +12,9 @@
 4. Create backend project.
   - Create Wordpress basic theme files: style.css, functions.php, index.php
 5. Add Google Calendar API PHP codes.
-6. Test creating event to see the result
-7. Create frontend project (HTML/CSS/JS).
-8. Adding jQuery FullCalendar
-9. Connecting the frontend and backend
-10. The final system can create an event, save the events, deleting event. All can be seen in Google Calendar.
-11. Create a demo video to show how's perform
+  - Add Google API library in index.php
+6. Create frontend project (HTML/CSS/JS).
+7. Adding jQuery FullCalendar
+8. Connecting the frontend and backend
+9. The final system can create an event, save the events, deleting event. All can be seen in Google Calendar.
+10. Create a demo video to show how's perform
