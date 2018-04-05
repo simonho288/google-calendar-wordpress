@@ -21,5 +21,6 @@
   - Import fullcalendar.min.css, fullcalendar.min.js, moment.min.js
   - Add fullcalendar codes into main.js, functions.php, index.php
   - Program the FullCalendar handlers
-8. The final system can create an event, save the events, deleting event. All can be seen in Google Calendar.
-9. Create a demo video to show how's perform
+8. Program the backend to handle Ajax calls from frontend.
+9. The final system can create an event, save the events, deleting event. All can be seen in Google Calendar.
+10. Create a demo video to show how's perform
