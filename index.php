@@ -1,14 +1,5 @@
 <?php /* Template Name: FullCalendar */?>
 
-<?php
-require_once 'vendor/autoload.php'; // install the composer libraries
-
-$gapi = new Google_Client();
-$gapi->setAuthConfig(__DIR__ . '/service-account.json');
-$gapi->setApplicationName('Google Calendar Wordpress Theme');
-$gapi->addScope(Google_Service_Calendar::CALENDAR);
-?>
-
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
   <head>

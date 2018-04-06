@@ -24,12 +24,45 @@ function initCalendar() {
 }
 
 /**
- * Invoke admin-ajax.php via Ajax
+ * Invoke admin-ajax.php via Ajax to get events from Google Calendar
  */
-function ajaxGetEvents() {
+function ajaxGetEvents(dateStart, dateEnd) {
   var postData = {
-    arg1: 'hello',
+    dateStart: dateStart,
+    dateEnd: dateEnd,
     action: 'get_events'
+  };
+  return $.ajax({
+    type: 'POST',
+    dataType: 'json',
+    url: php_data.ajaxUrl,
+    data: postData
+  });
+}
+
+/**
+ * Invoke admin-ajax.php via Ajax to save an event to Google Calendar
+ */
+function ajaxPutAnEvent(event) {
+  var postData = {
+    event: event,
+    action: 'put_event'
+  };
+  return $.ajax({
+    type: 'POST',
+    dataType: 'json',
+    url: php_data.ajaxUrl,
+    data: postData
+  });
+}
+
+/**
+ * Invoke admin-ajax.php via Ajax to remove an event from Google Calendar
+ */
+function ajaxDelEvent(eventId) {
+  var postData = {
+    event_id: eventId,
+    action: 'del_event'
   };
   return $.ajax({
     type: 'POST',
@@ -51,23 +84,27 @@ function refreshCalendar() {
  * FullCalendar event handler when a week is going to display
  */
 function onViewRender(view, elem) {
-  // Get the date range will be displaying
-  var timezone = -(new Date().getTimezoneOffset() / 60);
-  var dateStart = view.intervalStart.format() + 'T00:00:00';
-  var dateEnd = view.intervalEnd.format() + 'T00:00:00';
-  console.log(dateStart + ' - ' + dateEnd);
-  events = []; // Reset the global events array. It will be re-generated after ajax call.
+  // Reset the global events array. It will be re-generated in ajax return.
+  events = [];
 
-  ajaxGetEvents().done(function(response) {
-    debugger;
-    // Create a sample event
-    events.push({
-      _id: Math.floor(Math.random() * 10000000).toString(),
-      title: 'event1',
-      start: '2018-04-05T12:30:00',
-      end: '2018-04-05T13:00:00'
-    });
-    refreshCalendar();
+  // Get the date range will be displaying
+  var dateStart = view.intervalStart.format('YYYY-MM-DD') + 'T00:00:00' + moment().format('Z');
+  var dateEnd = view.intervalEnd.format('YYYY-MM-DD') + 'T00:00:00' + moment().format('Z');
+
+  ajaxGetEvents(dateStart, dateEnd).done(function(response) {
+    if (response.result) {
+      // Convert the event objects from PHP to FullCalendar format.
+      for (var i = 0; i < response.events.length; ++i) {
+        var event = response.events[i];
+        events.push({
+          _id: event._id,
+          title: event.title,
+          start: event.start,
+          end: event.end
+        });
+      }
+      refreshCalendar();
+    }
   });
 }
 
@@ -77,26 +114,35 @@ function onViewRender(view, elem) {
 function onDayClick(date, jsEvent, view) {
   var title = 'Demo event ' + (Math.floor(Math.random() * 999999) + 1).toString();
   var newEvent = {
-    _id: Math.floor(Math.random() * 10000000).toString(),
     title: title,
-    start: date.format(),
-    end: date.add(30, 'm').format()
+    start: date.format() + moment().format('Z'),
+    end: date.add(30, 'm').format() + moment().format('Z')
   };
-  events.push(newEvent);
-  console.log('"' + title + '" created.');
-  refreshCalendar();
+  ajaxPutAnEvent(newEvent).done(function(response) {
+    if (response.result) {
+      // Update the frontend if server process successfully.
+      newEvent._id = response.event_id;
+      events.push(newEvent);
+      console.log('"' + title + '" created.');
+      refreshCalendar();
+    }
+  })
 }
 
 /**
  * When a event clicked, just remove it from global events array.
  */
 function onEventClick(event, element) {
-  // Findout the event from global events. Remove the event which the user clicked.
-  var i = events.length;
-  while (i--) {
-    if (events[i]._id == event._id) {
-      events.splice(i, 1);
+  ajaxDelEvent(event._id).done(function(response) {
+    // Findout the event from global events array. Remove the event which the user clicked.
+    if (response.result) {
+      var i = events.length;
+      while (i--) {
+        if (events[i]._id == event._id) {
+          events.splice(i, 1);
+        }
+      }
+      refreshCalendar();
     }
-  }
-  refreshCalendar();
+  })
 }
