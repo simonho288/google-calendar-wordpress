@@ -11,6 +11,7 @@
   - Google User ID: api-access-from-php@api-project-for-blog-demo.iam.gserviceaccount.com
 4. Create backend project.
   - Create Wordpress basic theme files: style.css, functions.php, index.php
+  - Activate the Wordpress theme
 5. Add Google Calendar API PHP codes.
   - Add Google API library in index.php
 6. Create frontend project (HTML/CSS/JS).

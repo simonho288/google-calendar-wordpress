@@ -13,12 +13,11 @@ jQuery(document).ready(function(jquery) {
  */
 function initCalendar() {
   $('#calendar').fullCalendar({
-    viewRender: onViewRender,
-    // eventAfterAllRender: onViewRender,
+    viewRender: onViewRender, // when week changed...
     defaultView: 'agendaWeek',
-    dayClick: onDayClick,
-    eventClick: onEventClick,
-    events: events,
+    dayClick: onDayClick, // when a time slot clicked...
+    eventClick: onEventClick, // when an event clicked...
+    events: events, // Event objects array to be displayed
     editable: true
   });
 }

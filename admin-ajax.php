@@ -26,6 +26,9 @@ function get_events() {
   $dateEnd = $_POST['dateEnd'];
 
   $gcal = initGoogleCalendarApi();
+
+  // Query the Google Calendar. API doc:
+  // https://developers.google.com/calendar/v3/reference/events/get
   $opts = array(
     'maxResults' => 2500, // max results allowed by Google Calendar
     // 'orderBy' => 'startTime',
@@ -51,7 +54,7 @@ function get_events() {
       ));
     }
 
-    // Processing pagination
+    // Handling pagination
     $pageToken = $events->getNextPageToken();
     if ($pageToken) {
       $opts = array('pageToken' => $pageToken);
@@ -81,6 +84,9 @@ function put_event() {
   ));
 
   $gcal = initGoogleCalendarApi();
+
+  // Save the event to Google Calendar. The doc:
+  // https://developers.google.com/calendar/v3/reference/events/insert
   $result = $gcal->events->insert(CALENDAR_ID, $event);
 
   $return = array(
@@ -97,6 +103,9 @@ function del_event() {
   $event_id = $_POST['event_id']; // Event object from frontend
 
   $gcal = initGoogleCalendarApi();
+
+  // Google Calendar delete event doc:
+  // https://developers.google.com/calendar/v3/reference/events/delete
   $result = $gcal->events->delete(CALENDAR_ID, $event_id);
 
   $return = array(
