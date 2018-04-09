@@ -16,10 +16,11 @@ $ composer install
 ```
 
 3. Add this theme to WordPress
-For most easiler way to add this theme to your local WordPress, you can create a symbolic link to this project root directory. Below is the Linux command to do that (assume the Wordpress is installed in /var/www/html, and the codes are downloaded in google-calendar-wordpress directory):
+For most easiler way to add this theme to your local WordPress, you can create a symbolic link to this project root directory. Below is the Linux command to do that (assume the Wordpress is installed in /var/www/html):
 
 ```bash
-$ ln -s /var/www/html/wp-content/themes/google-calendar-wordpress ./google-calendar-wordpress
+$ cd [project root directory]
+$ ln -s $(pwd) /var/www/html/wp-content/themes/google-calendar-wordpress
 ```
 
 4. Activate and see the result
