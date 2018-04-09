@@ -16,14 +16,17 @@ $ cd [project root directory]
 $ composer install
 ```
 
-3. Add this theme to WordPress
+3. Download the API Key from Google API console
+As the Blog described, download the API Key file from Google API console. Rename it as `service-account.json` and put it at the project root directory.
+
+4. Add this theme to WordPress
 For most easiler way to add this theme to your local WordPress, you can create a symbolic link to this project root directory. Below is the Linux command to do that (assume the Wordpress is installed in /var/www/html):
 
 ```bash
 $ ln -s $(pwd) /var/www/html/wp-content/themes/google-calendar-wordpress
 ```
 
-4. Activate and see the result
+5. Activate and see the result
 
 You can activate this theme via your WordPress admin. Then click `visit site` to see what's the theme does.
 
