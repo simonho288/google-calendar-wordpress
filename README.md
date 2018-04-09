@@ -12,6 +12,7 @@ This is the source codes of the [Blog](https://blog.simonho.net/google-calendar-
 
 2. Run the composer to download the requried packages
 ```bash
+$ cd [project root directory]
 $ composer install
 ```
 
@@ -19,7 +20,6 @@ $ composer install
 For most easiler way to add this theme to your local WordPress, you can create a symbolic link to this project root directory. Below is the Linux command to do that (assume the Wordpress is installed in /var/www/html):
 
 ```bash
-$ cd [project root directory]
 $ ln -s $(pwd) /var/www/html/wp-content/themes/google-calendar-wordpress
 ```
 
