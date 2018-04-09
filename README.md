@@ -1,27 +1,27 @@
-# POC for implementing a Google Calendar booking conceptual system. Backend using WordPress and Frontend using jQuery FullCalendar
+This is the source codes of the [Blog](https://blog.simonho.net/google-calendar-wordpress-theme-steps-by-steps/) to describe how to build a Wordpress theme which the frontend displays a calendar (using jQuery FullCalendar). The Wordpress as backend which the PHP codes communicate with Google Calendar (via Google API service account) to perform loading/saving event(s). Unlike other common tutorials, this repo choose Server-to-Server communication approach. This does NOT require users to authenticate and consent.
 
-## Table of Contents
-1. Initialize PHP Project
-  - [Google Platform API initialize](https://github.com/google/google-api-php-client) [x]
-  - [Wordpress theme initialize](https://codex.wordpress.org/Theme_Development) []
-2. Create a demo Google Calendar (via calendar.google.com)
-  - Calendar ID: 4u857il583mtrqednn7c7u8h1g@group.calendar.google.com
-3. Obtain API key from Google Developer console
-  - Download service-account.json
-  - Google User ID: api-access-from-php@api-project-for-blog-demo.iam.gserviceaccount.com
-4. Create backend project.
-  - Create Wordpress basic theme files: style.css, functions.php, index.php
-  - Activate the Wordpress theme
-5. Add Google Calendar API PHP codes.
-  - Add Google API library in index.php
-6. Create frontend project (HTML/CSS/JS).
-  - Create assets directory
-  - Create assets/main.css
-  - Create assets/main.js
-7. Adding jQuery FullCalendar
-  - Import fullcalendar.min.css, fullcalendar.min.js, moment.min.js
-  - Add fullcalendar codes into main.js, functions.php, index.php
-  - Program the FullCalendar handlers
-8. Program the backend to handle Ajax calls from frontend.
-9. The final system can create an event, save the events, deleting event. All can be seen in Google Calendar.
-10. Create a demo video to show how's perform
+### Prerequisite
+1. WordPress 4.9+
+2. PHP 7.0+
+3. [Composer 1.6+](https://getcomposer.org/)
+4. A Google Account
+
+### Run the program
+
+1. Download the code
+
+2. Run the composer to download the requried packages
+```bash
+$ composer install
+```
+
+3. Add this theme to WordPress
+For most easiler way to add this theme to your local WordPress, you can create a symbolic link to this project root directory. Below is the Linux command to do that (assume the Wordpress is installed in /var/www/html, and the codes are downloaded in google-calendar-wordpress directory):
+
+```bash
+$ ln -s /var/www/html/wp-content/themes/google-calendar-wordpress ./google-calendar-wordpress
+```
+4. Run this theme
+
+You can activate this theme via your WordPress admin. Then click `visit site` to see what this theme doing.
+
