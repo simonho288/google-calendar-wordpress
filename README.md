@@ -1,4 +1,4 @@
-This is the source codes of the [Blog](https://blog.simonho.net/google-calendar-wordpress-theme-steps-by-steps/) to describe how to build a Wordpress theme which the frontend displays a calendar (using jQuery FullCalendar). The Wordpress as backend which the PHP codes communicate with Google Calendar (via Google API service account) to perform loading/saving event(s). Unlike other common tutorials, this repo chooses Server-to-Server communication approach. This does NOT require users to authenticate and consent.
+This is the source codes of the [Blog](https://blog.simonho.net/2018/04/google-calendar-wordpress-theme-steps.html) to describe how to build a Wordpress theme which the frontend displays a calendar (using jQuery FullCalendar). The Wordpress as backend which the PHP codes communicate with Google Calendar (via Google API service account) to perform loading/saving event(s). Unlike other common tutorials, this repo chooses Server-to-Server communication approach. This does NOT require users to authenticate and consent.
 
 ### Prerequisite
 1. WordPress 4.9+
